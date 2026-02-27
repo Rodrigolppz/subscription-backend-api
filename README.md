@@ -111,9 +111,6 @@ Todas essas rotas precisam ser instânciadas (importadas) no arquivo main que é
 
 ## MongoDB
 
-User: rodrigoDB
-Senha: Chacha75!!
-
 Aqui precisamos adicionar a connection string do banco na variavel de ambiente de development 
 
 precisamos criar uma folder chamada DATABASE e fazer o import do mongoose dentro do file mongodb.js
