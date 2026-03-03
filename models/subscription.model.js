@@ -27,7 +27,7 @@ const subscriptionSchema = new mongoose.Schema({
     },
     category:{
         type: String,
-        enum: ['sports','news','entertaiment','lifestyle','technology'],
+        enum: ['sports','news','entertainment','lifestyle','technology'],
         required: true,
     },
     paymentMethod: {
@@ -65,7 +65,7 @@ const subscriptionSchema = new mongoose.Schema({
     }
 },{ timestamps: true});
 
-subscriptionSchema.pre('save', function (next){
+subscriptionSchema.pre('save', function (){
 if(!this.renewalDate) {
     const renewalPeriods = {
         daily: 1,
@@ -81,8 +81,8 @@ if(!this.renewalDate) {
 if(this.renewalDate < new Date()){
     this.status = 'expired';
 }
-
-next();
 })
 
 const Subscription = mongoose.model('Subscription', subscriptionSchema);
+
+export default Subscription;
