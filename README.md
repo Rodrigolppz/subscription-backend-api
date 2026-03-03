@@ -154,3 +154,24 @@ O que é uma request body ?
 Request body é um objeto que contenha os dados vindo do lado do cliente. (POST request)
 
 ## Authorization
+
+Aqui nós criamos um middleware de autorização, que faz com que somente o próprio usuário consiga fazer GET no seu próprio ID, ou seja, outro usuário não pode fazer GET nas  informações de terceiros. Esse middleware funciona através de um Bearer Token.
+
+Para chamar o middleware, basta colocarmos ele entre a request e o handler final na rota desejada:
+
+userRouter.get('/:id', authorize, getUser);
+
+authorize é o nome do middleware, ele fica literalmente no meio.
+
+## Arcjet
+
+Para protegermos nossas rotas contra spam de requisição, utilizamos arcjet, que é uma aplicação pronta pra isso.
+
+adicionamos arcjet.js em config/
+arcjet.middleware.js em middlewares/
+
+e chamamos a config no app.js obviamente.
+
+## Subscription
+
+Aqui nós criamos o subscription.controller.js para adicionar nas rotas subscriptionrouter
